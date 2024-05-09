@@ -1,49 +1,47 @@
 import {Chrono} from 'react-chrono'
-import {Component} from 'react'
-import CourseTimelineCard from '../CourseTimelineCard'
+
 import ProjectTimelineCard from '../ProjectTimelineCard'
-import './index.css'
+import CourseTimelineCard from '../CourseTimelineCard'
 
-class TimelineView extends Component {
-  render() {
-    const {timelineItemsList} = this.props
+import {
+  TimelineContainer,
+  ResponsiveContainer,
+  HeaderContainer,
+  Heading,
+  CCBPHeading,
+} from './styledComponents'
 
-    return (
-      <div className="chrono-container">
-        <h1 className="heading">
-          MY JOURNEY OF
-          <span className="platform"> CCBP 4.0 </span>
-        </h1>
-        <Chrono
-          mode="VERTICAL_ALTERNATING"
-          items={timelineItemsList}
-          theme={{
-            primary: '#0967d2',
-            secondary: '#ffffff',
-            titleColor: '#0967d2',
-            titleColorActive: 'red',
-          }}
-          fontSizes={{
-            title: '1rem',
-          }}
-        >
-          {timelineItemsList.map(eachItem => {
-            if (eachItem.categoryId === 'COURSE') {
-              return (
-                <CourseTimelineCard key={eachItem.id} courseData={eachItem} />
-              )
-            }
-            return (
-              <ProjectTimelineCard
-                key={eachItem.id}
-                projectDetails={eachItem}
-              />
-            )
-          })}
-        </Chrono>
-      </div>
-    )
+const TimelineView = props => {
+  const {timelineItemsList} = props
+
+  const renderTimelineCard = item => {
+    if (item.categoryId === 'PROJECT') {
+      return <ProjectTimelineCard key={item.id} projectDetails={item} />
+    }
+    return <CourseTimelineCard key={item.id} courseDetails={item} />
   }
+
+  return (
+    <TimelineContainer>
+      <ResponsiveContainer>
+        <HeaderContainer>
+          <Heading>
+            MY JOURNEY OF <br />
+            <CCBPHeading>CCBP 4.0</CCBPHeading>
+          </Heading>
+        </HeaderContainer>
+        <Chrono
+          theme={{
+            secondary: 'white',
+          }}
+          items={timelineItemsList}
+          mode="VERTICAL_ALTERNATING"
+        >
+          {timelineItemsList.map(eachItem => renderTimelineCard(eachItem))}
+        </Chrono>
+      </ResponsiveContainer>
+    </TimelineContainer>
+  )
 }
 
 export default TimelineView
