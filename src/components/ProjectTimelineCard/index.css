@@ -1,0 +1,74 @@
+/* Write your CSS here */
+.project-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.project-image {
+  width: 85%;
+}
+@media screen and (min-width: 768px) {
+  .project-image {
+    width: 45%;
+  }
+}
+
+.project-title-icon-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* @media screen and (min-width: 768px) {
+  .project-title-icon-container {
+    width: 80%;
+  }
+} */
+
+.project-title {
+  color: #171f46;
+  font-family: 'Roboto';
+  font-size: 24px;
+}
+
+.project-title {
+  color: #171f46;
+  font-family: 'Roboto';
+  font-size: 24px;
+}
+
+.project-icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.date-icon {
+  height: 18px;
+  width: 18px;
+}
+.project-duration {
+  color: #1e293b;
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 12px;
+}
+
+.project-des {
+  color: #1e293b;
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.project-url {
+  color: #0967d2;
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 600;
+  align-self: flex-start;
+  text-decoration: none;
+}
